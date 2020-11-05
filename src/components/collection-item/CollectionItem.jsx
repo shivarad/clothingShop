@@ -15,7 +15,7 @@ return(
             <span className='collection-price'>${price}</span>
         </div>
         <CustomBtn inverted
-        onClick={()=>AddItem(item)}
+        onClick={()=>AddItem(item)} 
         >Add to cart</CustomBtn>
     </div>
 );
