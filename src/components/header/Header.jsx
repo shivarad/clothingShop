@@ -1,37 +1,36 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
 import {auth} from '../../firbase/firebase.uttils';
 import {ReactComponent as Logo} from '../../assets/crown_logo.svg';
-import './header.scss';
 import {connect} from 'react-redux';
 import CartIcon from '../cart-icon/CartIcon';
 import CartDropdown from '../cart-dropdown/CartDropdown';
 import {createStructuredSelector} from 'reselect';
 import {selectCurrentUser} from '../../redux/user/user-selectors';
 import {selectCartHidden} from '../../redux/cart/cart-selectors';
+import {HeaderContainer,OptionLink,LogoContainer,OptionsContainer} from './HeaderStyles';
 
 const Header=({currentUser,hidden})=>(
-    <div className='header'>
-        <Link to='/' className='logo-container'>
-            <Logo className='logo'/>
-        </Link>
-        <div className='options'>
-            <Link className='option' to='/shop'>SHOP</Link>
-            <Link className='option' to='/shop'>CONTACT</Link>
+    <HeaderContainer>
+        <LogoContainer to='/' >
+            <Logo />
+        </LogoContainer>
+        <OptionsContainer >
+            <OptionLink  to='/shop'>SHOP</OptionLink>
+            <OptionLink  to='/shop'>CONTACT</OptionLink>
             {currentUser?                          //if currentUser=Obj >true else if currentUser=null>false
-                <div className='option' onClick={()=>auth.signOut()}>SIGN OUT</div>    
+                <OptionLink as='div'  onClick={()=>auth.signOut()}>SIGN OUT</OptionLink>    
                 :
-                <Link className='option' to='/signin'>SIGN IN</Link>
+                <OptionLink  to='/signin'>SIGN IN</OptionLink>
 
             }
             <CartIcon/>
-        </div>
+        </OptionsContainer>
         {
         hidden?
         null:
         <CartDropdown/>
         }
-    </div>
+    </HeaderContainer>
 )
 const mapStateToProps=createStructuredSelector({
     currentUser:selectCurrentUser,
