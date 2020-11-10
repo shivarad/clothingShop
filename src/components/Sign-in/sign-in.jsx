@@ -2,7 +2,7 @@ import React from 'react';
 import FormInput from '../../components/custom-form-input/Form-Input';
 import CustomBtn from '../custom-button/customButton';
 import {auth,signInWithGoogle} from '../../firbase/firebase.uttils';
-import './sign-in.scss';
+import {SignInContainer,BtnsContainer} from './SignInStyles';
 
 class SignIn extends React.Component{
     constructor(props){
@@ -32,7 +32,7 @@ class SignIn extends React.Component{
 
     render(){
         return(
-            <div className='sign-in'>
+            <SignInContainer>
                 <h2>I allready have an account </h2>
                 <span>Sign in with your email and password</span>
                 <form onSubmit={this.handleSubmit}>
@@ -52,13 +52,13 @@ class SignIn extends React.Component{
                             required 
                             onChange={this.handleChange}>
                         </FormInput>
-                        <div className='buttons-container'>
+                        <BtnsContainer>
                             <CustomBtn type='submit' >Sign In</CustomBtn>
                             <CustomBtn onClick={signInWithGoogle} isGoogleSignIn>Sign In with Google</CustomBtn>
-                        </div>
+                        </BtnsContainer>
 
                 </form>
-            </div>
+            </SignInContainer>
         )
     }
 }

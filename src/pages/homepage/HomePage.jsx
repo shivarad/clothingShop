@@ -1,7 +1,7 @@
 import React from 'react';
 import Menu from '../../components/menu/menu';
 
-import {HomePageContainer} from './HomePageContainer';
+import {HomePageContainer} from './HomePageStyles';
 
 
 const HomePage=()=>(

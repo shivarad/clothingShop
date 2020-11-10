@@ -3,17 +3,18 @@ import MenuItem from '../menu-item/menu-item';
 import {connect} from 'react-redux';
 import {createStructuredSelector} from 'reselect'
 import { selectMenuSections } from '../../redux/menu/menu-selectors'
-import './menu.scss';
+
+import {MenuContainer} from './MenuStyles';
 
 const Menu =({sections}) =>
         (
-            <div className='menu'  >
+            <MenuContainer>
                {
                    sections.map(({title,id,imageUrl,size,linkUrl})=>
                      <MenuItem key={id} title={title} size={size} bgUrl={imageUrl} linkUrl={linkUrl}/>)
                  
                 }
-            </div>
+            </MenuContainer>
 
         );
         
