@@ -12,13 +12,12 @@ import  SetCurrentUser  from "./redux/user/user-actions";
 import {createStructuredSelector} from 'reselect';
 import {selectCurrentUser} from './redux/user/user-selectors';
 
-
 class App extends React.Component { //in order to save state for firebase auth the App should be declare as a class
   unsubscribeFromAuth=null;
   
   componentDidMount() {
-    const { SetCurrentUser } = this.props;
-
+    // const { SetCurrentUser,collectionsArray } = this.props; ***
+       const { SetCurrentUser } = this.props;
 
     this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
       if (userAuth) {
@@ -36,6 +35,7 @@ class App extends React.Component { //in order to save state for firebase auth t
       }
       
         SetCurrentUser(userAuth);
+        // addCollectionAndDocuments('collections',collectionsArray.map(({title,items})=>({title,items}))); ***
 
     });
   }
@@ -70,7 +70,8 @@ render(){
 }
 
 const mapStateToProps = createStructuredSelector ({
-  currentUser: selectCurrentUser
+  currentUser: selectCurrentUser,
+  // collectionsArray:selectCollectionForPreview    >>***just for entering first data to firebase one after app mounted
 });
 
 const mapDispatchToProps = dispatch => ({
