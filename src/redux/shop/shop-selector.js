@@ -17,12 +17,22 @@ export const selectCollections=createSelector(
 // pass collections as array not obj
 export const selectCollectionForPreview=createSelector(  
    [selectCollections],
-    collections=>Object.keys(collections).map(key=>collections[key])
+   collections=>collections?Object.keys(collections).map(key=>collections[key]):[]
 )
 
 export const selectCollection=collectionId=>createSelector(
     [selectCollections],
     // collections=>collections.find(collection=>collection.id===COLLECTION_ID_MAP[collectionId]) -->datanormalization: convert arrays to objects (shopdata)
-    collections=>collections[collectionId]
+    collections=>(collections?collections[collectionId]:null)
 
 )
+
+export const selectIsCollectionFetching = createSelector(
+    [selectShop],
+    shop => shop.isFetching
+  );
+  
+  export const selectIsCollectionsLoaded = createSelector(
+    [selectShop],
+    shop => !!shop.collections
+  );
