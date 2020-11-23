@@ -5,4 +5,4 @@ persist-redux
 react-router
 stripe
 styled componnet(separate branch)
-thunk then changed to redux-saga (separete branch)
+thunk then changed to redux-saga (separate branch)
