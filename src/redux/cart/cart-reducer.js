@@ -25,6 +25,11 @@ const INITIAL_STATE={
             return{
                 ...state,cartItems:removeFromCart(state.cartItems,action.payload)
             }
+            case CartActionTypes.CLEAR_CART:
+                return {
+                  ...state,
+                  cartItems: []
+                };
             default:
                 return state;
     }
