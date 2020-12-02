@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { Switch, Route ,Redirect  } from 'react-router-dom';
 import './App.css';
 import HomePage from './pages/homepage/HomePage';
@@ -11,19 +11,12 @@ import {createStructuredSelector} from 'reselect';
 import {selectCurrentUser} from './redux/user/user-selectors';
 import {checkUserSession} from './redux/user/user-actions';
 
-class App extends React.Component { //in order to save state for firebase auth the App should be declare as a class
-  unsubscribeFromAuth=null;
-  
-  componentDidMount() {
-   const {checkUserSession}=this.props;
-   checkUserSession();
-  }
-  
+const App =({checkUserSession,currentUser})=> { 
 
-  componentWillUnmount() {
-    this.unsubscribeFromAuth();
-  }
-render(){
+  useEffect(()=>{
+    checkUserSession();
+  },[checkUserSession])
+  
   return (
     <div >
        <Header/>
@@ -35,7 +28,7 @@ render(){
             exact
             path='/signin'
             render={() =>
-              this.props.currentUser ? (
+              currentUser ? (
                 <Redirect to='/' />
               ) : (
                 <SingInUp />
@@ -46,7 +39,7 @@ render(){
     </div>
   );
   }
-}
+
 
 const mapStateToProps = createStructuredSelector ({
   currentUser: selectCurrentUser
