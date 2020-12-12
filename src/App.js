@@ -12,7 +12,7 @@ import Spinner from './components/spinner/spinner';
 
 const HomePage= lazy(()=>import('./pages/homepage/HomePage')) ;
 const ShopPage =lazy(()=>import('./pages/ShopPage/ShopPage')) ;
-const CheckoutPage =lazy(()=>('./pages/checkoutPage/checkoutPage')) ;
+const CheckoutPage =lazy(()=>gitimport('./pages/checkoutPage/checkoutPage')) ;
 const SingInUp= lazy(()=>import('./pages/sign-In-up/sign-in-up')) ;
 
 
