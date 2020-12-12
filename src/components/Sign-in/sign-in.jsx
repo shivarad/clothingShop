@@ -2,7 +2,7 @@ import React, {useState}from 'react';
 import {connect} from 'react-redux';
 import FormInput from '../../components/custom-form-input/Form-Input';
 import CustomBtn from '../custom-button/customButton';
-import {SignInContainer,BtnsContainer} from './SignInStyles';
+import {SignInContainer,BtnsContainer,SignInTitle} from './SignInStyles';
 import {googleSigninStart,emailSigninStart} from '../../redux/user/user-actions';
 
 const SignIn =({emailSigninStart,googleSigninStart})=>{
@@ -23,7 +23,7 @@ const SignIn =({emailSigninStart,googleSigninStart})=>{
     
         return(
             <SignInContainer>
-                <h2>I allready have an account </h2>
+                <SignInTitle>I allready have an account </SignInTitle>
                 <span>Sign in with your email and password</span>
                 <form onSubmit={handleSubmit}>
                         <FormInput 
